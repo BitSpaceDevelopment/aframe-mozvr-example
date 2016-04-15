@@ -9,19 +9,37 @@
   <body>
     <a-scene>
 
+      <!-- Creating our assets -->
       <a-assets>
-      <a-asset-item id="ppla-obj" src="./obj/PanoPlaLogo.obj"></a-asset-item>
-      <a-asset-item id="ppla-mtl" src="./obj/PanoPlaLogo.mtl"></a-asset-item>
-    </a-assets>
+        <a-asset-item id="ppla-obj" src="./obj/PanoplaLogo.obj"></a-asset-item>
+        <a-asset-item id="ppla-mtl" src="./obj/PanoplaLogo.mtl"></a-asset-item>
+        <a-asset-item id="sph-obj" src="./obj/sphere.obj"></a-asset-item>
+        <a-asset-item id="sph-mtl" src="./obj/sphere.mtl"></a-asset-item>
+      </a-assets>
 
-    <!-- Using the asset management system. -->
-    <a-obj-model src="#ppla-obj" mtl="#pla-mtl"></a-obj-model>
+      <a-entity position="0 1.8 4">
+        <a-camera id="camera">
+          <a-cursor color="#4CC3D9"></a-cursor>
+        </a-camera>
+      </a-entity>
 
-    <!-- Defining the URL inline. Not recommended but may be more comfortable. -->
-    <a-obj-model src="ppla.obj" mtl="ppla.mtl"></a-obj-model>
-      <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-box id="orange-cube" position="0 3.5 -2" rotation="30 30 0" width="2" depth="2" height="2" color="#F16745" roughness="0.8">
+        <a-event name="cursor-mouseenter" scale="3 1 1" color="#FFC65D"></a-event>
+        <a-event name="cursor-mouseenter" target="#shadow" scale="3 2 2"></a-event>
+        <a-event name="cursor-mouseleave" scale="1 1 1" color="#F16745"></a-event>
+        <a-event name="cursor-mouseleave" target="#shadow" scale="2 2 2"></a-event>
+      </a-box>
+
+      <a-image id="shadow" position="0 0 -2" src="img/radial-shadow-2.png"
+               opacity="0.5" rotation="-90 0 0" scale="2 2 2"></a-image>
+
+      <!-- Using the asset management system. -->
+      <!-- <a-obj-model src="#ppla-obj" mtl="#pla-mtl"></a-obj-model> -->
+      <!-- <a-obj-model src="#sphere-obj" mtl="#sphere-mtl"></a-obj-model> -->
+
+      <!-- The Skybox -->
       <a-sky src="./img/space.jpg"></a-sky>
-      <!-- <a-sky color="#6EBAA7"></a-sky> -->
+
     </a-scene>
   </body>
 </html>
